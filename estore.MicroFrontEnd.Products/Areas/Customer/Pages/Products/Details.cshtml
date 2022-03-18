@@ -1,0 +1,58 @@
+﻿@page
+@model estore.MicroFrontEnd.Products.Areas.Customer.Pages.Products.DetailsModel
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <p><a asp-page="/index">Go Back</a></p>
+    <hr />
+    <dl class="row">
+         <dt class="col-sm-2">
+           Image
+        </dt>
+        <dd class="col-sm-10">
+           <img src="@Model.Product.ImageName" height="90" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Cost)
+        </dd>
+    </dl>
+    <div class="alert alert-info mt-3">
+        <p>@Html.Raw(Model?.Product?.PaymentButtonCode)</p>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $('document').ready(function(){
+
+        var parent = document.forms[0];
+
+        var input_user = document.createElement("input");
+        input_user.setAttribute('type', 'hidden');
+        input_user.setAttribute('name', 'custom');
+        input_user.setAttribute('value', '@Model?.CustomerId');
+
+        parent.appendChild(input_user);
+    });
+
+</script>
+}

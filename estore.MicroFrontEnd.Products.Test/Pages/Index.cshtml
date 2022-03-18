@@ -1,0 +1,11 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="text-center">
+    <h3>Products MicroFrontEnd UI Test</h3>
+    <hr />
+</div>
+
+<div>@await Component.InvokeAsync("ProductsList")</div>

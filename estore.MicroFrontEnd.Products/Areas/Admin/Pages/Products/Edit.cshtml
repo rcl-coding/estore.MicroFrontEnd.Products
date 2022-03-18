@@ -1,0 +1,72 @@
+﻿@page
+@model estore.MicroFrontEnd.Products.Areas.Admin.Pages.Products.EditModel
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        @if (!string.IsNullOrEmpty(Model?.ErrorMessage))
+        {
+            <div class="alert alert-danger">
+                <p>@Model.ErrorMessage</p>
+            </div>
+        }
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+            <input type="hidden" asp-for="Product.ImageName" />
+            <div class="form-group">
+                <label asp-for="Product.SortCode" class="control-label"></label>
+                <input asp-for="Product.SortCode" class="form-control" />
+                <span asp-validation-for="Product.SortCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Description" class="control-label"></label>
+                <input asp-for="Product.Description" class="form-control" />
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Cost" class="control-label"></label>
+                <input asp-for="Product.Cost" class="form-control" />
+                <span asp-validation-for="Product.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Category" class="control-label"></label>
+                <input asp-for="Product.Category" class="form-control" />
+                <span asp-validation-for="Product.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.PaymentButtonCode" class="control-label"></label>
+                <textarea asp-for="Product.PaymentButtonCode" class="form-control"></textarea>
+                <span asp-validation-for="Product.PaymentButtonCode" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3 mb-3">
+                <label class="control-label">Upload Image</label>
+                <input type="file" name="file" />
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
