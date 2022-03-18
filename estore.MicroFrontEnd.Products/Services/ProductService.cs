@@ -27,7 +27,7 @@ namespace estore.MicroFrontEnd.Products.Services
             try
             {
                 _httpClient.DefaultRequestHeaders.Add(_apiOptions.Value.UserName, _apiOptions.Value.Password);
-                var response = await _httpClient.GetAsync($"{_apiOptions.Value.Endpoint}/v1/product/all");
+                var response = await _httpClient.GetAsync($"{_apiOptions.Value.Endpoint}/products-api/v1/product/all");
                 response.EnsureSuccessStatusCode();
                 string json = await response.Content.ReadAsStringAsync();
                 return JsonSerializer.Deserialize<List<Product>>(json);
@@ -44,7 +44,7 @@ namespace estore.MicroFrontEnd.Products.Services
             try
             {
                 _httpClient.DefaultRequestHeaders.Add(_apiOptions.Value.UserName, _apiOptions.Value.Password);
-                var response = await _httpClient.GetAsync($"{_apiOptions.Value.Endpoint}/v1/product/id/{id}");
+                var response = await _httpClient.GetAsync($"{_apiOptions.Value.Endpoint}/products-api//v1/product/id/{id}");
                 response.EnsureSuccessStatusCode();
                 string json = await response.Content.ReadAsStringAsync();
                 return JsonSerializer.Deserialize<Product>(json);
@@ -63,7 +63,7 @@ namespace estore.MicroFrontEnd.Products.Services
                 
                 _httpClient.DefaultRequestHeaders.Add(_apiOptions.Value.UserName, _apiOptions.Value.Password);
 
-                var response = await _httpClient.PutAsync($"{_apiOptions.Value.Endpoint}/v1/product",
+                var response = await _httpClient.PutAsync($"{_apiOptions.Value.Endpoint}/products-api//v1/product",
                     new StringContent(JsonSerializer.Serialize(product), Encoding.UTF8, "application/json"));
                 response.EnsureSuccessStatusCode();
                 string json = await response.Content.ReadAsStringAsync();
@@ -81,7 +81,7 @@ namespace estore.MicroFrontEnd.Products.Services
             try
             {
                 _httpClient.DefaultRequestHeaders.Add(_apiOptions.Value.UserName, _apiOptions.Value.Password);
-                var response = await _httpClient.DeleteAsync($"{_apiOptions.Value.Endpoint}/v1/product/id/{id}");
+                var response = await _httpClient.DeleteAsync($"{_apiOptions.Value.Endpoint}/products-api//v1/product/id/{id}");
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
